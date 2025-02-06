@@ -1,0 +1,12 @@
+{
+	"name": "wpovernight/wpo-ips-cius-ro",
+	"description": "PDF Invoices & Packing Slips for WooCommerce - CIUS RO",
+	"autoload": {
+		"psr-4": {
+			"WPO\\IPS\\CIUS_RO\\": "ubl/"
+		}
+	},
+	"config": {
+		"platform-check": false
+	}
+}
