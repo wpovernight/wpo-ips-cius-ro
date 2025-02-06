@@ -249,14 +249,14 @@ if ( ! class_exists( 'WPO_IPS_CIUS_RO' ) ) {
 						'enabled' => true,
 						'handler' => \WPO\IPS\CIUS_RO\Handlers\Common\AddressHandler::class,
 						'options' => array(
-							'root' => 'AccountingSupplierParty',
+							'root' => 'cac:AccountingSupplierParty',
 						),
 					),
 					'accountingcustomerparty' => array(
 						'enabled' => true,
 						'handler' => \WPO\IPS\CIUS_RO\Handlers\Common\AddressHandler::class,
 						'options' => array(
-							'root' => 'AccountingCustomerParty',
+							'root' => 'cac:AccountingCustomerParty',
 						),
 					),
 					'delivery' => array(
