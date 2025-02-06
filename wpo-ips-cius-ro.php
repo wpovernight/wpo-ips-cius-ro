@@ -4,7 +4,7 @@
  * Requires Plugins: woocommerce-pdf-invoices-packing-slips
  * Plugin URI:       https://github.com/wpovernight/wpo-ips-cius-ro
  * Description:      CIUS-RO add-on for PDF Invoices & Packing Slips for WooCommerce plugin.
- * Version:          1.0.0-beta-1
+ * Version:          1.0.0
  * Update URI:       https://github.com/wpovernight/wpo-ips-cius-ro
  * Author:           WP Overnight
  * Author URI:       https://wpovernight.com
@@ -26,14 +26,14 @@ if ( ! class_exists( 'WPO_IPS_CIUS_RO' ) ) {
 		 *
 		 * @var string
 		 */
-		public $version = '1.0.0-beta-1';
+		public $version = '1.0.0';
 		
 		/**
 		 * Base plugin version
 		 *
 		 * @var string
 		 */
-		public $base_plugin_version = '3.9.5-beta-13';
+		public $base_plugin_version = '3.9.5';
 		
 		/**
 		 * UBL format
@@ -47,7 +47,7 @@ if ( ! class_exists( 'WPO_IPS_CIUS_RO' ) ) {
 		 *
 		 * @var string
 		 */
-		public $format_name = 'CIUS-RO';
+		public $format_name = 'EN16931 CIUS-RO';
 		
 		/**
 		 * Root element
