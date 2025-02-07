@@ -169,9 +169,9 @@ if ( ! class_exists( 'WPO_IPS_CIUS_RO' ) ) {
 		 * @param array $data
 		 * @param array $options
 		 * @param \WPO\IPS\EN16931\Handlers\Common\CustomizationIdHandler $handler
-		 * @return void
+		 * @return array
 		 */
-		public function make_customization_id_compliant( array $customization_id, array $data, array $options, \WPO\IPS\EN16931\Handlers\Common\CustomizationIdHandler $handler ) {
+		public function make_customization_id_compliant( array $customization_id, array $data, array $options, \WPO\IPS\EN16931\Handlers\Common\CustomizationIdHandler $handler ): array {
 			if ( $this->is_cius_ro_ubl_document( $handler->document ) ) {
 				$customization_id['value'] .= '#compliant#urn:efactura.mfinante.ro:CIUS-RO:1.0.1';
 			}
