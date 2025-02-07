@@ -28,8 +28,10 @@ class ComposerStaticInitb59ed94e9d2ca114d1f2039b42867da1
         'WPO\\IPS\\EN16931\\Handlers\\Common\\DueDateHandler' => __DIR__ . '/../..' . '/en16931/Handlers/Common/DueDateHandler.php',
         'WPO\\IPS\\EN16931\\Handlers\\Common\\LegalMonetaryTotalHandler' => __DIR__ . '/../..' . '/en16931/Handlers/Common/LegalMonetaryTotalHandler.php',
         'WPO\\IPS\\EN16931\\Handlers\\Common\\PaymentTermsHandler' => __DIR__ . '/../..' . '/en16931/Handlers/Common/PaymentTermsHandler.php',
+        'WPO\\IPS\\EN16931\\Handlers\\Common\\ProfileIdHandler' => __DIR__ . '/../..' . '/en16931/Handlers/Common/ProfileIdHandler.php',
         'WPO\\IPS\\EN16931\\Handlers\\Common\\TaxTotalHandler' => __DIR__ . '/../..' . '/en16931/Handlers/Common/TaxTotalHandler.php',
         'WPO\\IPS\\EN16931\\Handlers\\Invoice\\InvoiceLineHandler' => __DIR__ . '/../..' . '/en16931/Handlers/Invoice/InvoiceLineHandler.php',
+        'WPO\\IPS\\EN16931\\Handlers\\Invoice\\InvoiceNoteHandler' => __DIR__ . '/../..' . '/en16931/Handlers/Invoice/InvoiceNoteHandler.php',
         'WPO\\IPS\\EN16931\\Handlers\\Invoice\\InvoiceTypeCodeHandler' => __DIR__ . '/../..' . '/en16931/Handlers/Invoice/InvoiceTypeCodeHandler.php',
     );
 

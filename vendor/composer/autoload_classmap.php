@@ -13,7 +13,9 @@ return array(
     'WPO\\IPS\\EN16931\\Handlers\\Common\\DueDateHandler' => $baseDir . '/en16931/Handlers/Common/DueDateHandler.php',
     'WPO\\IPS\\EN16931\\Handlers\\Common\\LegalMonetaryTotalHandler' => $baseDir . '/en16931/Handlers/Common/LegalMonetaryTotalHandler.php',
     'WPO\\IPS\\EN16931\\Handlers\\Common\\PaymentTermsHandler' => $baseDir . '/en16931/Handlers/Common/PaymentTermsHandler.php',
+    'WPO\\IPS\\EN16931\\Handlers\\Common\\ProfileIdHandler' => $baseDir . '/en16931/Handlers/Common/ProfileIdHandler.php',
     'WPO\\IPS\\EN16931\\Handlers\\Common\\TaxTotalHandler' => $baseDir . '/en16931/Handlers/Common/TaxTotalHandler.php',
     'WPO\\IPS\\EN16931\\Handlers\\Invoice\\InvoiceLineHandler' => $baseDir . '/en16931/Handlers/Invoice/InvoiceLineHandler.php',
+    'WPO\\IPS\\EN16931\\Handlers\\Invoice\\InvoiceNoteHandler' => $baseDir . '/en16931/Handlers/Invoice/InvoiceNoteHandler.php',
     'WPO\\IPS\\EN16931\\Handlers\\Invoice\\InvoiceTypeCodeHandler' => $baseDir . '/en16931/Handlers/Invoice/InvoiceTypeCodeHandler.php',
 );
