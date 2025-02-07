@@ -7,13 +7,13 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
-    'WPO\\IPS\\CIUS_RO\\Handlers\\Common\\AddressHandler' => $baseDir . '/ubl/Handlers/Common/AddressHandler.php',
-    'WPO\\IPS\\CIUS_RO\\Handlers\\Common\\CustomizationIdHandler' => $baseDir . '/ubl/Handlers/Common/CustomizationIdHandler.php',
-    'WPO\\IPS\\CIUS_RO\\Handlers\\Common\\DocumentCurrencyCodeHandler' => $baseDir . '/ubl/Handlers/Common/DocumentCurrencyCodeHandler.php',
-    'WPO\\IPS\\CIUS_RO\\Handlers\\Common\\DueDateHandler' => $baseDir . '/ubl/Handlers/Common/DueDateHandler.php',
-    'WPO\\IPS\\CIUS_RO\\Handlers\\Common\\LegalMonetaryTotalHandler' => $baseDir . '/ubl/Handlers/Common/LegalMonetaryTotalHandler.php',
-    'WPO\\IPS\\CIUS_RO\\Handlers\\Common\\PaymentTermsHandler' => $baseDir . '/ubl/Handlers/Common/PaymentTermsHandler.php',
-    'WPO\\IPS\\CIUS_RO\\Handlers\\Common\\TaxTotalHandler' => $baseDir . '/ubl/Handlers/Common/TaxTotalHandler.php',
-    'WPO\\IPS\\CIUS_RO\\Handlers\\Invoice\\InvoiceLineHandler' => $baseDir . '/ubl/Handlers/Invoice/InvoiceLineHandler.php',
-    'WPO\\IPS\\CIUS_RO\\Handlers\\Invoice\\InvoiceTypeCodeHandler' => $baseDir . '/ubl/Handlers/Invoice/InvoiceTypeCodeHandler.php',
+    'WPO\\IPS\\EN16931\\Handlers\\Common\\AddressHandler' => $baseDir . '/en16931/Handlers/Common/AddressHandler.php',
+    'WPO\\IPS\\EN16931\\Handlers\\Common\\CustomizationIdHandler' => $baseDir . '/en16931/Handlers/Common/CustomizationIdHandler.php',
+    'WPO\\IPS\\EN16931\\Handlers\\Common\\DocumentCurrencyCodeHandler' => $baseDir . '/en16931/Handlers/Common/DocumentCurrencyCodeHandler.php',
+    'WPO\\IPS\\EN16931\\Handlers\\Common\\DueDateHandler' => $baseDir . '/en16931/Handlers/Common/DueDateHandler.php',
+    'WPO\\IPS\\EN16931\\Handlers\\Common\\LegalMonetaryTotalHandler' => $baseDir . '/en16931/Handlers/Common/LegalMonetaryTotalHandler.php',
+    'WPO\\IPS\\EN16931\\Handlers\\Common\\PaymentTermsHandler' => $baseDir . '/en16931/Handlers/Common/PaymentTermsHandler.php',
+    'WPO\\IPS\\EN16931\\Handlers\\Common\\TaxTotalHandler' => $baseDir . '/en16931/Handlers/Common/TaxTotalHandler.php',
+    'WPO\\IPS\\EN16931\\Handlers\\Invoice\\InvoiceLineHandler' => $baseDir . '/en16931/Handlers/Invoice/InvoiceLineHandler.php',
+    'WPO\\IPS\\EN16931\\Handlers\\Invoice\\InvoiceTypeCodeHandler' => $baseDir . '/en16931/Handlers/Invoice/InvoiceTypeCodeHandler.php',
 );

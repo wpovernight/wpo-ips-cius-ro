@@ -114,6 +114,7 @@ if ( ! class_exists( 'WPO_IPS_CIUS_RO' ) ) {
 			add_action( 'before_woocommerce_init', array( $this, 'custom_order_tables_compatibility' ) );
 			
 			add_filter( 'wpo_ips_ubl_is_country_format_extension_active', '__return_true' );
+			add_filter( 'wpo_ips_en16931_handle_CustomizationID', array( $this, 'make_customization_id_compliant' ), 10, 4 );
 			add_filter( 'wpo_wcpdf_document_ubl_settings_formats', array( $this, 'add_format_to_ubl_settings' ), 10, 2 );
 			add_filter( 'wpo_wc_ubl_document_root_element', array( $this, 'add_root_element' ), 10, 2 );
 			add_filter( 'wpo_wc_ubl_document_format', array( $this, 'set_document_format' ), 10, 2 );
@@ -147,6 +148,7 @@ if ( ! class_exists( 'WPO_IPS_CIUS_RO' ) ) {
 		 */
 		public function load_translations(): void {
 			load_plugin_textdomain( 'wpo-ips-cius-ro', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+			load_plugin_textdomain( 'wpo-ips-en16931', false, dirname( plugin_basename( __FILE__ ) ) . '/en16931/languages/' );
 		}
 		
 		/**
@@ -158,6 +160,20 @@ if ( ! class_exists( 'WPO_IPS_CIUS_RO' ) ) {
 			if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
 				\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
 			}
+		}
+		
+		/**
+		 * Make customization ID compliant
+		 *
+		 * @param array $customization_id
+		 * @param array $data
+		 * @param array $options
+		 * @param \WPO\IPS\EN16931\Handlers\Common\CustomizationIdHandler $handler
+		 * @return void
+		 */
+		public function make_customization_id_compliant( array $customization_id, array $data, array $options, \WPO\IPS\EN16931\Handlers\Common\CustomizationIdHandler $handler ) {
+			$customization_id['value'] .= '#compliant#urn:efactura.mfinante.ro:CIUS-RO:1.0.1';
+			return $customization_id;
 		}
 		
 		/**
@@ -215,7 +231,7 @@ if ( ! class_exists( 'WPO_IPS_CIUS_RO' ) ) {
 				$format = apply_filters( 'wpo_ips_cius_ro_document_format', array(
 					'customizationid' => array(
 						'enabled' => true,
-						'handler' => \WPO\IPS\CIUS_RO\Handlers\Common\CustomizationIdHandler::class,
+						'handler' => \WPO\IPS\EN16931\Handlers\Common\CustomizationIdHandler::class,
 					),
 					'id' => array(
 						'enabled' => true,
@@ -227,15 +243,15 @@ if ( ! class_exists( 'WPO_IPS_CIUS_RO' ) ) {
 					),
 					'duedate' => array(
 						'enabled' => true,
-						'handler' => \WPO\IPS\CIUS_RO\Handlers\Common\DueDateHandler::class,
+						'handler' => \WPO\IPS\EN16931\Handlers\Common\DueDateHandler::class,
 					),
 					'invoicetypecode' => array(
 						'enabled' => true,
-						'handler' => \WPO\IPS\CIUS_RO\Handlers\Invoice\InvoiceTypeCodeHandler::class,
+						'handler' => \WPO\IPS\EN16931\Handlers\Invoice\InvoiceTypeCodeHandler::class,
 					),
 					'documentcurrencycode' => array(
 						'enabled' => true,
-						'handler' => \WPO\IPS\CIUS_RO\Handlers\Common\DocumentCurrencyCodeHandler::class,
+						'handler' => \WPO\IPS\EN16931\Handlers\Common\DocumentCurrencyCodeHandler::class,
 					),
 					'buyerreference' => array(
 						'enabled' => true,
@@ -247,14 +263,14 @@ if ( ! class_exists( 'WPO_IPS_CIUS_RO' ) ) {
 					),
 					'accountsupplierparty' => array(
 						'enabled' => true,
-						'handler' => \WPO\IPS\CIUS_RO\Handlers\Common\AddressHandler::class,
+						'handler' => \WPO\IPS\EN16931\Handlers\Common\AddressHandler::class,
 						'options' => array(
 							'root' => 'cac:AccountingSupplierParty',
 						),
 					),
 					'accountingcustomerparty' => array(
 						'enabled' => true,
-						'handler' => \WPO\IPS\CIUS_RO\Handlers\Common\AddressHandler::class,
+						'handler' => \WPO\IPS\EN16931\Handlers\Common\AddressHandler::class,
 						'options' => array(
 							'root' => 'cac:AccountingCustomerParty',
 						),
@@ -269,7 +285,7 @@ if ( ! class_exists( 'WPO_IPS_CIUS_RO' ) ) {
 					),
 					'paymentterms' => array(
 						'enabled' => true,
-						'handler' => \WPO\IPS\CIUS_RO\Handlers\Common\PaymentTermsHandler::class,
+						'handler' => \WPO\IPS\EN16931\Handlers\Common\PaymentTermsHandler::class,
 					),
 					'allowancecharge' => array(
 						'enabled' => false,
@@ -277,15 +293,15 @@ if ( ! class_exists( 'WPO_IPS_CIUS_RO' ) ) {
 					),
 					'taxtotal' => array(
 						'enabled' => true,
-						'handler' => \WPO\IPS\CIUS_RO\Handlers\Common\TaxTotalHandler::class,
+						'handler' => \WPO\IPS\EN16931\Handlers\Common\TaxTotalHandler::class,
 					),
 					'legalmonetarytotal' => array(
 						'enabled' => true,
-						'handler' => \WPO\IPS\CIUS_RO\Handlers\Common\LegalMonetaryTotalHandler::class,
+						'handler' => \WPO\IPS\EN16931\Handlers\Common\LegalMonetaryTotalHandler::class,
 					),
 					'invoiceline' => array(
 						'enabled' => true,
-						'handler' => \WPO\IPS\CIUS_RO\Handlers\Invoice\InvoiceLineHandler::class,
+						'handler' => \WPO\IPS\EN16931\Handlers\Invoice\InvoiceLineHandler::class,
 					),
 				), $ubl_document );
 			}

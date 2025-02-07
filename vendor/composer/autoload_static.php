@@ -9,28 +9,28 @@ class ComposerStaticInitb59ed94e9d2ca114d1f2039b42867da1
     public static $prefixLengthsPsr4 = array (
         'W' => 
         array (
-            'WPO\\IPS\\CIUS_RO\\' => 16,
+            'WPO\\IPS\\EN16931\\' => 16,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'WPO\\IPS\\CIUS_RO\\' => 
+        'WPO\\IPS\\EN16931\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/ubl',
+            0 => __DIR__ . '/../..' . '/en16931',
         ),
     );
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'WPO\\IPS\\CIUS_RO\\Handlers\\Common\\AddressHandler' => __DIR__ . '/../..' . '/ubl/Handlers/Common/AddressHandler.php',
-        'WPO\\IPS\\CIUS_RO\\Handlers\\Common\\CustomizationIdHandler' => __DIR__ . '/../..' . '/ubl/Handlers/Common/CustomizationIdHandler.php',
-        'WPO\\IPS\\CIUS_RO\\Handlers\\Common\\DocumentCurrencyCodeHandler' => __DIR__ . '/../..' . '/ubl/Handlers/Common/DocumentCurrencyCodeHandler.php',
-        'WPO\\IPS\\CIUS_RO\\Handlers\\Common\\DueDateHandler' => __DIR__ . '/../..' . '/ubl/Handlers/Common/DueDateHandler.php',
-        'WPO\\IPS\\CIUS_RO\\Handlers\\Common\\LegalMonetaryTotalHandler' => __DIR__ . '/../..' . '/ubl/Handlers/Common/LegalMonetaryTotalHandler.php',
-        'WPO\\IPS\\CIUS_RO\\Handlers\\Common\\PaymentTermsHandler' => __DIR__ . '/../..' . '/ubl/Handlers/Common/PaymentTermsHandler.php',
-        'WPO\\IPS\\CIUS_RO\\Handlers\\Common\\TaxTotalHandler' => __DIR__ . '/../..' . '/ubl/Handlers/Common/TaxTotalHandler.php',
-        'WPO\\IPS\\CIUS_RO\\Handlers\\Invoice\\InvoiceLineHandler' => __DIR__ . '/../..' . '/ubl/Handlers/Invoice/InvoiceLineHandler.php',
-        'WPO\\IPS\\CIUS_RO\\Handlers\\Invoice\\InvoiceTypeCodeHandler' => __DIR__ . '/../..' . '/ubl/Handlers/Invoice/InvoiceTypeCodeHandler.php',
+        'WPO\\IPS\\EN16931\\Handlers\\Common\\AddressHandler' => __DIR__ . '/../..' . '/en16931/Handlers/Common/AddressHandler.php',
+        'WPO\\IPS\\EN16931\\Handlers\\Common\\CustomizationIdHandler' => __DIR__ . '/../..' . '/en16931/Handlers/Common/CustomizationIdHandler.php',
+        'WPO\\IPS\\EN16931\\Handlers\\Common\\DocumentCurrencyCodeHandler' => __DIR__ . '/../..' . '/en16931/Handlers/Common/DocumentCurrencyCodeHandler.php',
+        'WPO\\IPS\\EN16931\\Handlers\\Common\\DueDateHandler' => __DIR__ . '/../..' . '/en16931/Handlers/Common/DueDateHandler.php',
+        'WPO\\IPS\\EN16931\\Handlers\\Common\\LegalMonetaryTotalHandler' => __DIR__ . '/../..' . '/en16931/Handlers/Common/LegalMonetaryTotalHandler.php',
+        'WPO\\IPS\\EN16931\\Handlers\\Common\\PaymentTermsHandler' => __DIR__ . '/../..' . '/en16931/Handlers/Common/PaymentTermsHandler.php',
+        'WPO\\IPS\\EN16931\\Handlers\\Common\\TaxTotalHandler' => __DIR__ . '/../..' . '/en16931/Handlers/Common/TaxTotalHandler.php',
+        'WPO\\IPS\\EN16931\\Handlers\\Invoice\\InvoiceLineHandler' => __DIR__ . '/../..' . '/en16931/Handlers/Invoice/InvoiceLineHandler.php',
+        'WPO\\IPS\\EN16931\\Handlers\\Invoice\\InvoiceTypeCodeHandler' => __DIR__ . '/../..' . '/en16931/Handlers/Invoice/InvoiceTypeCodeHandler.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

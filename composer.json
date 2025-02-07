@@ -3,7 +3,7 @@
 	"description": "PDF Invoices & Packing Slips for WooCommerce - CIUS RO",
 	"autoload": {
 		"psr-4": {
-			"WPO\\IPS\\CIUS_RO\\": "ubl/"
+			"WPO\\IPS\\EN16931\\": "en16931/"
 		}
 	},
 	"config": {
