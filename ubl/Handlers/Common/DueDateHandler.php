@@ -12,7 +12,8 @@ class DueDateHandler extends UblHandler {
 
 	public function handle( $data, $options = array() ) {
 		if ( $this->document->order->is_paid() ) {
-			$due_date_timestamp = $this->document->order->get_date_paid()->getTimestamp();
+			$paid_date          = $this->document->order->get_date_paid();
+			$due_date_timestamp = ( $paid_date instanceof \WC_DateTime ) ? $paid_date->getTimestamp() : 0;
 		} else {
 			$due_date_timestamp = is_callable( array( $this->document->order_document, 'get_due_date' ) ) ? $this->document->order_document->get_due_date() : 0;
 		}
