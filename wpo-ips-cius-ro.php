@@ -344,10 +344,10 @@ if ( ! class_exists( 'WPO_IPS_CIUS_RO' ) ) {
 		 * @return array
 		 */
 		public function add_country_subentity( array $party, array $data, array $options, \WPO\IPS\EN16931\Handlers\Common\AddressHandler $handler ): array {
-			if ( $this->is_cius_ro_ubl_document( $handler->document ) && isset( $party[0]['value'] ) && is_array( $party[0]['value'] ) && isset( $options['root'] ) ) {
+			if ( $this->is_cius_ro_ubl_document( $handler->document ) && isset( $party[0]['value'] ) && is_array( $party[0]['value'] ) ) {
 				foreach ( $party[0]['value'] as $key => $value ) {
 					if ( 'cac:PostalAddress' === $value['name'] ) {
-						$root = isset( $options['root'] ) ? $options['root'] : 'cac:AccountingSupplierParty';
+						$root             = isset( $options['root'] ) ? $options['root'] : 'cac:AccountingSupplierParty';
 						$countrySubentity = array(
 							array(
 								'name'  => 'cbc:CountrySubentity',
