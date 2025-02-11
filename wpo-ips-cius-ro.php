@@ -121,6 +121,7 @@ if ( ! class_exists( 'WPO_IPS_CIUS_RO' ) ) {
 			add_filter( 'wpo_wc_ubl_document_namespaces', array( $this, 'set_document_namespaces' ), 10, 2 );
 			add_filter( 'wpo_ips_en16931_handle_AccountingSupplierParty', array( $this, 'add_country_subentity' ), 10, 4 );
 			add_filter( 'wpo_ips_en16931_handle_AccountingCustomerParty', array( $this, 'add_country_subentity' ), 10, 4 );
+			add_filter( 'wpo_wc_ubl_handle_PaymentMeans', array( $this, 'remove_instruction_note' ), 10, 3 );
 		}
 		
 		/**
@@ -359,6 +360,27 @@ if ( ! class_exists( 'WPO_IPS_CIUS_RO' ) ) {
 			}
 			
 			return $party;
+		}
+		
+		/**
+		 * Remove instruction note
+		 *
+		 * @param array $payment_means
+		 * @param array $options
+		 * @param \WPO\IPS\UBL\Handlers\Common\PaymentMeansHandler $handler
+		 * @return array
+		 */
+		public function remove_instruction_note( array $payment_means, array $options, \WPO\IPS\UBL\Handlers\Common\PaymentMeansHandler $handler ): array {
+			if ( $this->is_cius_ro_ubl_document( $handler->document ) && isset( $payment_means[0]['value'] ) && is_array( $payment_means[0]['value'] )  ) {
+				foreach ( $payment_means[0]['value'] as $key => $value ) {
+					if ( 'cbc:InstructionNote' === $value['name'] ) {
+						unset( $payment_means[0]['value'][ $key ] );
+						break;
+					}
+				}
+			}
+			
+			return $payment_means;
 		}
 
 	}
