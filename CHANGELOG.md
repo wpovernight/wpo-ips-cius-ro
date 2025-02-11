@@ -1,3 +1,7 @@
+### v1.0.3 (2025-02-11)
+
+- Fix: `cbc:CountrySubentity` on `cac:AccountingSupplierParty` not getting the shop state
+
 ### v1.0.2 (2025-02-11)
 
 - New: replaces UBL handlers directory with EN16931 submodule
