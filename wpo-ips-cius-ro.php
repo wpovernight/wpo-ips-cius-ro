@@ -119,6 +119,7 @@ if ( ! class_exists( 'WPO_IPS_CIUS_RO' ) ) {
 			add_filter( 'wpo_wc_ubl_document_root_element', array( $this, 'add_root_element' ), 10, 2 );
 			add_filter( 'wpo_wc_ubl_document_format', array( $this, 'set_document_format' ), 10, 2 );
 			add_filter( 'wpo_wc_ubl_document_namespaces', array( $this, 'set_document_namespaces' ), 10, 2 );
+			add_filter( 'wpo_ips_en16931_handle_AccountingSupplierParty', array( $this, 'add_country_subentity' ), 10, 4 );
 		}
 		
 		/**
@@ -329,6 +330,34 @@ if ( ! class_exists( 'WPO_IPS_CIUS_RO' ) ) {
 			}
 			
 			return $namespaces;
+		}
+		
+		/**
+		 * Add country subentity
+		 *
+		 * @param array $supplierParty
+		 * @param array $data
+		 * @param array $options
+		 * @param \WPO\IPS\EN16931\Handlers\Common\AddressHandler $handler
+		 * @return array
+		 */
+		public function add_country_subentity( array $supplierParty, array $data, array $options, \WPO\IPS\EN16931\Handlers\Common\AddressHandler $handler ): array {
+			if ( $this->is_cius_ro_ubl_document( $handler->document ) && isset( $supplierParty[0]['value'] ) && is_array( $supplierParty[0]['value'] ) ) {
+				foreach ( $supplierParty[0]['value'] as $key => $value ) {
+					if ( 'cac:PostalAddress' === $value['name'] ) {
+						$countrySubentity = array(
+							array(
+								'name'  => 'cbc:CountrySubentity',
+								'value' => $handler->document->order->get_billing_state(),
+							)
+						);
+						array_splice( $supplierParty[0]['value'][ $key ]['value'], 3, 0, $countrySubentity );
+						break;
+					}
+				}
+			}
+			
+			return $supplierParty;
 		}
 
 	}
