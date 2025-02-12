@@ -345,17 +345,21 @@ if ( ! class_exists( 'WPO_IPS_CIUS_RO' ) ) {
 		 */
 		public function add_country_subentity( array $party, array $data, array $options, \WPO\IPS\EN16931\Handlers\Common\AddressHandler $handler ): array {
 			if ( $this->is_cius_ro_ubl_document( $handler->document ) && isset( $party[0]['value'] ) && is_array( $party[0]['value'] ) ) {
-				foreach ( $party[0]['value'] as $key => $value ) {
-					if ( 'cac:PostalAddress' === $value['name'] ) {
-						$root             = isset( $options['root'] ) ? $options['root'] : 'cac:AccountingSupplierParty';
-						$countrySubentity = array(
-							array(
-								'name'  => 'cbc:CountrySubentity',
-								'value' => ( 'cac:AccountingSupplierParty' === $root ) ? \WC()->countries->get_base_state() : $handler->document->order->get_billing_state(),
-							)
-						);
-						array_splice( $party[0]['value'][ $key ]['value'], 3, 0, $countrySubentity );
-						break;
+				$country = $handler->document->order->get_billing_country();
+				
+				if ( 'RO' === $country ) {
+					foreach ( $party[0]['value'] as $key => $value ) {
+						if ( 'cac:PostalAddress' === $value['name'] ) {
+							$root             = isset( $options['root'] ) ? $options['root'] : 'cac:AccountingSupplierParty';
+							$countrySubentity = array(
+								array(
+									'name'  => 'cbc:CountrySubentity',
+									'value' => $country . '-' . ( 'cac:AccountingSupplierParty' === $root ) ? \WC()->countries->get_base_state() : $handler->document->order->get_billing_state(),
+								)
+							);
+							array_splice( $party[0]['value'][ $key ]['value'], 3, 0, $countrySubentity );
+							break;
+						}
 					}
 				}
 			}
