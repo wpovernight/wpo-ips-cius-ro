@@ -1,3 +1,7 @@
+### v1.0.5 (2025-02-12)
+
+- New: Adds `CompanyID` to customer `PartyLegalEntity`
+
 ### v1.0.4 (2025-02-12)
 
 - Fix: Adds country prefix to `CountrySubentity` value
