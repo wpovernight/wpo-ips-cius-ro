@@ -1,3 +1,7 @@
+### v1.0.4 (2025-02-12)
+
+- Fix: Adds country prefix to `CountrySubentity` value
+  
 ### v1.0.3 (2025-02-11)
 
 - Fix: `cbc:CountrySubentity` on `cac:AccountingSupplierParty` not getting the shop state
