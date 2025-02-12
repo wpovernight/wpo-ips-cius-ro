@@ -122,6 +122,7 @@ if ( ! class_exists( 'WPO_IPS_CIUS_RO' ) ) {
 			add_filter( 'wpo_ips_en16931_handle_AccountingSupplierParty', array( $this, 'add_country_subentity' ), 10, 4 );
 			add_filter( 'wpo_ips_en16931_handle_AccountingCustomerParty', array( $this, 'add_country_subentity' ), 10, 4 );
 			add_filter( 'wpo_wc_ubl_handle_PaymentMeans', array( $this, 'remove_instruction_note' ), 10, 3 );
+			add_filter( 'wpo_ips_en16931_handle_AccountingCustomerParty', array( $this, 'maybe_add_customer_party_legal_entity' ), 10, 4 );
 		}
 		
 		/**
@@ -386,6 +387,35 @@ if ( ! class_exists( 'WPO_IPS_CIUS_RO' ) ) {
 			}
 			
 			return $payment_means;
+		}
+		
+		/**
+		 * Maybe add customer party legal entity
+		 *
+		 * @param array $customerParty
+		 * @param array $data
+		 * @param array $options
+		 * @param \WPO\IPS\EN16931\Handlers\Common\AddressHandler $handler
+		 * @return array
+		 */
+		public function maybe_add_customer_party_legal_entity( $customerParty, $data, $options, $handler ) {
+			$companyID = apply_filters( 'wpo_ips_cius_ro_CustomerParty_CompanyID', '', $customerParty, $data, $options, $handler );
+			
+			if ( ! empty( $companyID ) && $this->is_cius_ro_ubl_document( $handler->document ) && isset( $customerParty[0]['value'] ) && is_array( $customerParty[0]['value'] ) ) {
+				foreach ( $customerParty[0]['value'] as $key => $value ) {
+					if ( 'cac:PartyLegalEntity' === $value['name'] ) {
+						$customerParty[0]['value'][ $key ]['value'][] = array(
+							'name'       => 'cbc:CompanyID',
+							'value'      => esc_html( $companyID ),
+							'attributes' => array(
+								'schemeID' => '0106',
+							),
+						);
+					}
+				}
+			}
+			
+			return $customerParty;
 		}
 
 	}
