@@ -398,7 +398,7 @@ if ( ! class_exists( 'WPO_IPS_CIUS_RO' ) ) {
 		 * @param \WPO\IPS\EN16931\Handlers\Common\AddressHandler $handler
 		 * @return array
 		 */
-		public function maybe_add_customer_party_legal_entity( $customerParty, $data, $options, $handler ) {
+		public function maybe_add_customer_party_legal_entity( array $customerParty, array $data, array $options, \WPO\IPS\EN16931\Handlers\Common\AddressHandler $handler ): array {
 			$companyID = apply_filters( 'wpo_ips_cius_ro_CustomerParty_CompanyID', '', $customerParty, $data, $options, $handler );
 			
 			if ( ! empty( $companyID ) && $this->is_cius_ro_ubl_document( $handler->document ) && isset( $customerParty[0]['value'] ) && is_array( $customerParty[0]['value'] ) ) {
