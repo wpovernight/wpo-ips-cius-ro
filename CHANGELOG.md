@@ -1,3 +1,7 @@
+### v1.0.6 (2025-02-12)
+
+- Tweak: Updates the EN16931 submodule
+
 ### v1.0.5 (2025-02-12)
 
 - New: Adds `CompanyID` to customer `PartyLegalEntity`
