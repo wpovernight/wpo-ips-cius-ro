@@ -355,7 +355,7 @@ if ( ! class_exists( 'WPO_IPS_CIUS_RO' ) ) {
 							$countrySubentity = array(
 								array(
 									'name'  => 'cbc:CountrySubentity',
-									'value' => $country . '-' . ( 'cac:AccountingSupplierParty' === $root ) ? \WC()->countries->get_base_state() : $handler->document->order->get_billing_state(),
+									'value' => $country . '-' . ( ( 'cac:AccountingSupplierParty' === $root ) ? \WC()->countries->get_base_state() : $handler->document->order->get_billing_state() ),
 								)
 							);
 							array_splice( $party[0]['value'][ $key ]['value'], 3, 0, $countrySubentity );
@@ -377,15 +377,15 @@ if ( ! class_exists( 'WPO_IPS_CIUS_RO' ) ) {
 		 * @return array
 		 */
 		public function remove_instruction_note( array $payment_means, array $options, \WPO\IPS\UBL\Handlers\Common\PaymentMeansHandler $handler ): array {
-			if ( $this->is_cius_ro_ubl_document( $handler->document ) && isset( $payment_means[0]['value'] ) && is_array( $payment_means[0]['value'] )  ) {
-				foreach ( $payment_means[0]['value'] as $key => $value ) {
-					if ( 'cbc:InstructionNote' === $value['name'] ) {
-						unset( $payment_means[0]['value'][ $key ] );
+			if ( $this->is_cius_ro_ubl_document( $handler->document ) && isset( $payment_means['value'] ) && is_array( $payment_means['value'] ) ) {
+				foreach ( $payment_means['value'] as $key => $value ) {
+					if ( isset( $value['name'] ) && 'cbc:InstructionNote' === $value['name'] ) {
+						unset( $payment_means['value'][ $key ] );
 						break;
 					}
 				}
 			}
-			
+
 			return $payment_means;
 		}
 		
@@ -400,10 +400,10 @@ if ( ! class_exists( 'WPO_IPS_CIUS_RO' ) ) {
 		 */
 		public function maybe_add_customer_party_legal_entity( array $customerParty, array $data, array $options, \WPO\IPS\EN16931\Handlers\Common\AddressHandler $handler ): array {
 			$companyID = apply_filters( 'wpo_ips_cius_ro_CustomerParty_CompanyID', '', $customerParty, $data, $options, $handler );
-			
+
 			if ( ! empty( $companyID ) && $this->is_cius_ro_ubl_document( $handler->document ) && isset( $customerParty[0]['value'] ) && is_array( $customerParty[0]['value'] ) ) {
 				foreach ( $customerParty[0]['value'] as $key => $value ) {
-					if ( 'cac:PartyLegalEntity' === $value['name'] ) {
+					if ( isset( $value['name'] ) && 'cac:PartyLegalEntity' === $value['name'] && isset( $value['value'] ) && is_array( $value['value'] ) ) {
 						$customerParty[0]['value'][ $key ]['value'][] = array(
 							'name'       => 'cbc:CompanyID',
 							'value'      => esc_html( $companyID ),
@@ -411,10 +411,11 @@ if ( ! class_exists( 'WPO_IPS_CIUS_RO' ) ) {
 								'schemeID' => '0106',
 							),
 						);
+						break;
 					}
 				}
 			}
-			
+
 			return $customerParty;
 		}
 
