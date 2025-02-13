@@ -1,3 +1,7 @@
+### v1.0.8 (2025-02-13)
+
+- Fix: issue with the built-in updater
+  
 ### v1.0.7 (2025-02-13)
 
 - Fix: issues affecting three functions
