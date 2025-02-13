@@ -1,3 +1,7 @@
+### v1.0.7 (2025-02-13)
+
+- Fix: issues affecting three functions
+
 ### v1.0.6 (2025-02-12)
 
 - Tweak: Updates the EN16931 submodule
