@@ -1,3 +1,8 @@
+### v1.0.9 (2025-02-21)
+
+- New: Upgraded the EN16931 module to v1.0.4
+- New: Upgraded the Updater module to v1.1.4
+
 ### v1.0.8 (2025-02-13)
 
 - Fix: issue with the built-in updater
